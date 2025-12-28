@@ -1,4 +1,4 @@
-package com.example.lab_week_13
+package com.example.lab_week_13.api
 
 import com.example.lab_week_13.model.PopularMoviesResponse
 import retrofit2.http.GET

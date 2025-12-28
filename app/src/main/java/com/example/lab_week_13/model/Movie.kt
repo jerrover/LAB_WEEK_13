@@ -1,12 +1,14 @@
 package com.example.lab_week_13.model
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+@Entity(tableName = "movies", primaryKeys = ["id"])
 @JsonClass(generateAdapter = true)
 data class Movie(
     val adult: Boolean = false,
-    val backdrop_path: String? = null,
+    val backdrop_path: String? = "",
     val id: Int = 0,
     @field:Json(name = "original_language")
     val originalLanguage: String? = null,
@@ -25,4 +27,3 @@ data class Movie(
     @field:Json(name = "vote_count")
     val voteCount: Int = 0
 )
-
