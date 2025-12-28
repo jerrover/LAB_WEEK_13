@@ -40,4 +40,17 @@ class MovieRepository(
             }
         }.flowOn(Dispatchers.IO)
     }
+    suspend fun fetchMoviesFromNetwork() {
+        val movieDao: MovieDao = movieDatabase.movieDao()
+        try {
+            val popularMovies = movieService.getPopularMovies(apiKey)
+            val moviesFetched = popularMovies.results
+            movieDao.addMovies(moviesFetched)
+        } catch (exception: Exception) {
+            android.util.Log.d(
+                "MovieRepository",
+                "An error occurred: ${exception.message}"
+            )
+        }
+    }
 }
